@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<section class="topsection">
+    <div class="row justify-content-center">
+        <div class="col-md-6 mb-3">
+            <a href="@Url.ActionLink("Products","Shop",  new {  })" class="btn btn-block btn-secondary btn-lg">
+                <i class="fa fa-user mr-2"></i> Continue as User
+            </a>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <a href="@Url.ActionLink("Products","Adminproduct",  new {  })" class="btn btn-block btn-secondary btn-lg">
+                <i class="fa fa-user-cog mr-2"></i> Continue as Admin
+            </a>
+        </div>
+    </div>
+</section>
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>

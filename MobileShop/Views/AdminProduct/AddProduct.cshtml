@@ -1,0 +1,156 @@
+﻿@model MobileShop.Models.Request.ProductRequestModel
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddProduct</title>
+    <link href="~/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+
+    <link href="~/dist/css/adminlte.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron bg-info text-white text-center p-2">
+                    <h1 class="display-4">Add Product</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS (optional, only needed for certain components) -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <form class="card card-primary" asp-action="SaveProduct">
+        <div class="row">
+            <div class="col-md-6 card ">
+                <div class=" card-body">
+
+
+
+                    <div class="form-group">
+                        <label asp-for="ProductName" class="control-label"></label>
+                        <input asp-for="ProductName" class="form-control" />
+                        <span asp-validation-for="ProductName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <label>Select Brand</label>
+                        <select asp-for="BrandID" asp-items="Model.BrandList" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+
+                        <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price" class="control-label"></label>
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageURL" class="control-label"></label>
+                        <input asp-for="ImageURL" class="form-control" />
+                        <span asp-validation-for="ImageURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IMEI1" class="control-label"></label>
+                        <input asp-for="IMEI1" class="form-control" />
+                        <span asp-validation-for="IMEI1" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="IMEI2" class="control-label"></label>
+                        <input asp-for="IMEI2" class="form-control" />
+                        <span asp-validation-for="IMEI2" class="text-danger"></span>
+                    </div>
+
+
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="col-md-3 btn btn-primary" value="AddProduct">Submit</button>
+                    @*<input type="submit" value="Create" class="btn btn-primary" />*@
+                </div>
+            </div>
+
+            <div class="col-md-6 card ">
+                <div class=" card-body">
+
+
+
+
+                    <div class="form-group">
+                        <label asp-for="DisplaySize" class="control-label"></label>
+                        <input asp-for="DisplaySize" class="form-control" />
+                        <span asp-validation-for="DisplaySize" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="RAM" class="control-label"></label>
+                        <input asp-for="RAM" class="form-control" />
+                        <span asp-validation-for="RAM" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StorageCapacity" class="control-label"></label>
+                        <input asp-for="StorageCapacity" class="form-control" />
+                        <span asp-validation-for="StorageCapacity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CameraQuality" class="control-label"></label>
+                        <input asp-for="CameraQuality" class="form-control" />
+                        <span asp-validation-for="CameraQuality" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="BatteryCapacity" class="control-label"></label>
+                        <input asp-for="BatteryCapacity" class="form-control" />
+                        <span asp-validation-for="BatteryCapacity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Processor" class="control-label"></label>
+                        <input asp-for="Processor" class="form-control" />
+                        <span asp-validation-for="Processor" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="OperatingSystem" class="control-label"></label>
+                        <input asp-for="OperatingSystem" class="form-control" />
+                        <span asp-validation-for="OperatingSystem" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Connectivity" class="control-label"></label>
+                        <input asp-for="Connectivity" class="form-control" />
+                        <span asp-validation-for="Connectivity" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AdditionalFeatures" class="control-label"></label>
+
+                        <textarea asp-for="AdditionalFeatures" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        <span asp-validation-for="AdditionalFeatures" class="text-danger"></span>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </form>
+
+
+
+
+
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
+</html>

@@ -1,0 +1,185 @@
+﻿@model MobileShop.Models.response.OrderResponseViewModel
+
+@{
+    Layout = null;
+}
+@{
+    bool onlypending = false;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .kverticalspace {
+            height: 10px;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0 15px;
+            margin: 5px 0 0 0;
+        }
+    </style>>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+
+    <link href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
+    <link href="~/css/style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+
+<body>
+    <div style="padding-left:10px;padding-right:10px; ">
+
+
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3> @Html.DisplayFor(modelItem => modelItem.TotalOrders)</h3>
+
+                        <p>Total Orders</p>
+                    </div>
+                    <div class="icon">
+                        @*<i class="ion-ios-cart"></i>*@
+                        <i class="ion ion-android-cart"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>@Html.DisplayFor(modelItem => modelItem.PendingOrders)</h3>
+
+                        <p>Pending</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-ios-loop-strong"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>@Html.DisplayFor(modelItem => modelItem.CompleatedOders)</h3>
+
+                        <p>Completed</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-android-done"></i>
+
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>@Html.DisplayFor(modelItem => modelItem.TotalSale)</h3>
+
+                        <p>Total Sale</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion  ion-social-usd"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+    </div>
+    <div class="kverticalspace"></div>
+    <div class="kverticalspace"></div>
+    <div class="kverticalspace"></div>
+
+
+
+
+    <div class="card">
+        <div class="card-header">
+            <h2 class="card-title">Orders List</h2>
+        </div>
+        <!-- ./card-header -->
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>OrderDate</th>
+                        <th>BuyerName</th>
+                        <th>ShippingAddress</th>
+                        <th>Products</th>
+                        <th>TotalAmount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="myElement">
+                    @foreach (var item in Model.Listorder)
+                    {
+                        if (onlypending ? item.Status == "Pending" : true)
+                        {
+
+                            <tr data-widget="expandable-table" aria-expanded="true">
+                                <td> @Html.DisplayFor(modelItem => item.OrderDate)</td>
+                                <td> @Html.DisplayFor(modelItem => item.BuyerName)</td>
+                                <td> @Html.DisplayFor(modelItem => item.ShippingAddress)</td>
+                                <td>
+                                    @foreach (string str in item.ProductName)
+                                    {<p> @Html.DisplayFor(modelItem => str)</p>
+                                }
+                                </td>
+                                <td> @Html.DisplayFor(modelItem => item.TotalAmount)</td>
+                                <td> @Html.DisplayFor(modelItem => item.Status)</td>
+
+                            </tr>
+                            <tr class="kverticalspace"> </tr>
+                        }
+
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+        <!-- /.card-body -->
+    </div>
+  
+ 
+
+
+
+</body>
+</html>

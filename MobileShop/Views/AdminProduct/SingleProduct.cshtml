@@ -1,0 +1,128 @@
+﻿@model MobileShop.Models.Response.ProductDetailResponseModel
+
+@{
+    ViewData["Title"] = "SingleProduct";
+}
+
+
+
+<head>
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/owl.carousel.css" rel="stylesheet" />
+    <link href="~/css/responsive.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <style>
+        .scaleA {
+            max-height: 350px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .product-inner-price {
+            font-size: 24px;
+            color: #ff6600; /* You can adjust the color to your preference */
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .product-details {
+            padding: 20px;
+            border: 1px solid #ddd; /* Adding a border to separate the details */
+            border-radius: 5px;
+            margin-top: 20px;
+            background-color: #f9f9f9; /* Light gray background */
+        }
+    </style>
+
+</head>
+
+<div class="col-sm-6">
+    <div>
+        <h2 class="product-name">
+            @Html.DisplayFor(model => model.ProductName)
+        </h2>
+
+        <img src="@Html.DisplayFor(model => model.ImageURL)" class="scaleA" />
+
+        <div class="product-inner-price">
+            @Html.DisplayFor(model => model.Price)
+        </div>
+
+        <!-- Delete Product Button -->
+        <form action="@Url.ActionLink("Delete", "AdminProduct", new { id = Model.ProductID })" method="post" class="d-inline">
+            @Html.AntiForgeryToken()
+            <button class="btn btn-danger" type="submit">Delete Product</button>
+        </form>
+
+        <!-- Edit Product Button -->
+        <a href="@Url.ActionLink("Edit", "AdminProduct", new {id = Model.ProductID })" class="btn btn-primary">Edit Product</a>
+    </div>
+</div>
+
+
+
+
+<div class="col-sm-6">
+    <div class="product-details">
+        <ul>
+            <li>
+                <strong>Product Name:</strong>
+                <span>@Html.DisplayFor(model => model.ProductName)</span>
+            </li>
+            <!-- Add other product details here as needed -->
+            <li>
+                <strong>Description:</strong>
+                <span>@Html.DisplayFor(model => model.Description)</span>
+            </li>
+            <li>
+                <strong>Price:</strong>
+                <span>@Html.DisplayFor(model => model.Price)</span>
+            </li>
+            <li>
+                <strong>Display Size:</strong>
+                <span>@Html.DisplayFor(model => model.DisplaySize)</span>
+            </li>
+            <li>
+                <strong>RAM:</strong>
+                <span>@Html.DisplayFor(model => model.RAM)</span>
+            </li>
+            <li>
+                <strong>Storage Capacity:</strong>
+                <span>@Html.DisplayFor(model => model.StorageCapacity)</span>
+            </li>
+            <li>
+                <strong>Camera Quality:</strong>
+                <span>@Html.DisplayFor(model => model.CameraQuality)</span>
+            </li>
+            <li>
+                <strong>Battery Capacity:</strong>
+                <span>@Html.DisplayFor(model => model.BatteryCapacity)</span>
+            </li>
+            <li>
+                <strong>Processor:</strong>
+                <span>@Html.DisplayFor(model => model.Processor)</span>
+            </li>
+            <li>
+                <strong>Operating System:</strong>
+                <span>@Html.DisplayFor(model => model.OperatingSystem)</span>
+            </li>
+            <li>
+                <strong>Connectivity:</strong>
+                <span>@Html.DisplayFor(model => model.Connectivity)</span>
+            </li>
+            <li>
+                <strong>Additional Features:</strong>
+                <span>@Html.DisplayFor(model => model.AdditionalFeatures)</span>
+            </li>
+            <li>
+                <strong>Brand Name:</strong>
+                <span>@Html.DisplayFor(model => model.BrandName)</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div>
